@@ -20,14 +20,14 @@ namespace ai
       virtual bool Empty() const;
       virtual size_t Size() const;
     protected:
-      
+
       struct NodePtr
       {
         NodePtr(Node *node_in);
         bool operator<(const NodePtr &rhs) const;
         Node *ptr;
       };
-      
+
       std::priority_queue<NodePtr> frontier;
     private:
     };

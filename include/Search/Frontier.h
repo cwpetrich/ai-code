@@ -3,15 +3,15 @@
 
 namespace ai
 {
-	namespace Search
-	{
+  namespace Search
+  {
     /**
      * Abstract base class to enforce support for
      * frontier operations.
      */
-		class Frontier
-		{
-		public:
+    class Frontier
+    {
+    public:
       enum FrontierType
         {
           T_NULL,
@@ -19,16 +19,16 @@ namespace ai
           T_BreadthFirst,
           T_MAX
         };
-      
-			virtual ~Frontier();
-			virtual bool Insert(Node *node_in) = 0;
-			virtual Node *Remove() = 0;
-			virtual bool Empty() const = 0;
-			virtual size_t Size() const = 0;
-		protected:
-		private:
-		};
-	}
+
+      virtual ~Frontier();
+      virtual bool Insert(Node *node_in) = 0;
+      virtual Node *Remove() = 0;
+      virtual bool Empty() const = 0;
+      virtual size_t Size() const = 0;
+    protected:
+    private:
+    };
+  }
 }
 
 #endif /* _FRONTIER_H_ */

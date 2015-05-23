@@ -9,11 +9,11 @@ namespace ai
   namespace FOL
   {
     enum SentenceType { T_TRUE, T_FALSE, T_SYMBOL, T_UNARY, T_BINARY,
-			T_LEFT_PAREN, T_RIGHT_PAREN, T_FORALL, T_EXISTS,
-			T_IFF, T_IMPLIES, T_OR, T_AND, T_NOT, T_ATOMIC,
-			
-			T_ERROR };
-    
+                        T_LEFT_PAREN, T_RIGHT_PAREN, T_FORALL, T_EXISTS,
+                        T_IFF, T_IMPLIES, T_OR, T_AND, T_NOT, T_ATOMIC,
+
+                        T_ERROR };
+
     class Sentence0;
     class Sentence1;
     class Sentence2;
@@ -25,7 +25,7 @@ namespace ai
     class TermList;
     class Term;
     class Identifier;
-    
+
     class Sentence0
     {
     public:
@@ -41,18 +41,18 @@ namespace ai
 
       Sentence0 *GetLHS();
       Sentence1 *GetRHS();
-      
+
       void GetAllConstants(std::list<Identifier *> &constants_out) const;
       void EliminateBiconditional();
       void EliminateImplication();
       void MoveNotIn();
-      void EliminateExtraParens();      
+      void EliminateExtraParens();
 
       SentenceType GetSentenceType() const;
       Sentence4 * GetNextNot();
       Sentence3 * GetNextAnd();
       Sentence2 * GetNextOr();
-      
+
       std::string ToString(bool verbose) const;
     protected:
       Sentence0 *lhs;
@@ -74,12 +74,12 @@ namespace ai
 
       Sentence1 *GetLHS();
       Sentence2 *GetRHS();
-      
+
       void GetAllConstants(std::list<Identifier *> &constants_out) const;
       void EliminateBiconditional();
       void EliminateImplication();
       void MoveNotIn();
-      void EliminateExtraParens();      
+      void EliminateExtraParens();
 
       SentenceType GetSentenceType() const;
       Sentence4 * GetNextNot();
@@ -91,7 +91,7 @@ namespace ai
       Sentence2 *rhs;
     private:
     };
-    
+
 
     class Sentence2
     {
@@ -108,12 +108,12 @@ namespace ai
 
       Sentence2 *GetLHS();
       Sentence3 *GetRHS();
-      
+
       void GetAllConstants(std::list<Identifier *> &constants_out) const;
       void EliminateBiconditional();
       void EliminateImplication();
       void MoveNotIn();
-      void EliminateExtraParens();      
+      void EliminateExtraParens();
 
       SentenceType GetSentenceType() const;
       Sentence4 * GetNextNot();
@@ -125,7 +125,7 @@ namespace ai
       Sentence3 *rhs;
     private:
     };
-    
+
 
     class Sentence3
     {
@@ -142,13 +142,13 @@ namespace ai
 
       Sentence3 *GetLHS();
       Sentence4 *GetRHS();
-      
+
       void GetAllConstants(std::list<Identifier *> &constants_out) const;
       void EliminateBiconditional();
       void EliminateImplication();
       void MoveNotIn();
-      void EliminateExtraParens();      
-      
+      void EliminateExtraParens();
+
       SentenceType GetSentenceType() const;
       Sentence4 * GetNextNot();
       Sentence3 * GetNextAnd();
@@ -159,7 +159,7 @@ namespace ai
       Sentence4 *rhs;
     private:
     };
-    
+
 
     class Sentence4
     {
@@ -177,13 +177,13 @@ namespace ai
 
       Sentence4 *GetLHS();
       Sentence5 *GetRHS();
-      
+
       void GetAllConstants(std::list<Identifier *> &constants_out) const;
       void EliminateBiconditional();
       void EliminateImplication();
       void MoveNotIn();
-      void EliminateExtraParens();      
-      
+      void EliminateExtraParens();
+
       SentenceType GetSentenceType() const;
       Sentence4 * GetNextNot();
       Sentence3 * GetNextAnd();
@@ -223,13 +223,13 @@ namespace ai
       AtomicSentence *GetAtomicSentence();
       VariableList   *GetVariableList();
       Sentence0      *GetRHS();
-      
+
       void GetAllConstants(std::list<Identifier *> &constants_out) const;
       void EliminateBiconditional();
       void EliminateImplication();
       void MoveNotIn();
-      void EliminateExtraParens();      
-      
+      void EliminateExtraParens();
+
       SentenceType GetSentenceType() const;
       Sentence4 * GetNextNot();
       Sentence3 * GetNextAnd();
@@ -259,9 +259,9 @@ namespace ai
       TermList  *GetTermList();
       Term      *GetLHS();
       Term      *GetRHS();
-      
+
       void GetAllConstants(std::list<Identifier *> &constants_out) const;
-      
+
       std::string ToString(bool verbose) const;
     protected:
       Identifier *predicate;
@@ -287,7 +287,7 @@ namespace ai
       Identifier   *GetVariable();
 
       void GetAllVariables(std::list<Identifier *> &variables_out) const;
-      
+
       std::string ToString(bool verbose) const;
     protected:
       VariableList *variable_list;
@@ -295,7 +295,7 @@ namespace ai
     private:
     };
 
-    
+
     class TermList
     {
     public:
@@ -312,7 +312,7 @@ namespace ai
 
       int       CountArity() const;
       void GetAllConstants(std::list<Identifier *> &constants_out) const;
-      
+
       std::string ToString(bool verbose) const;
     protected:
       TermList *term_list;
@@ -320,7 +320,7 @@ namespace ai
     private:
     };
 
-    
+
     class Term
     {
     public:
@@ -335,12 +335,12 @@ namespace ai
       // sets the function and term_list pointers to 0
       // used for Function to Predicate conversion.
       void ClearFunction();
-      
+
       Identifier *GetIdentifier();
       TermList *GetTermList();
-      
+
       void GetAllConstants(std::list<Identifier *> &constants_out) const;
-      
+
       std::string ToString(bool verbose) const;
     protected:
       Identifier *identifier;
@@ -348,7 +348,7 @@ namespace ai
     private:
     };
 
-    
+
     class Identifier
     {
     public:
@@ -359,7 +359,7 @@ namespace ai
       virtual ~Identifier();
 
       Symbol *GetSymbol();
-      
+
       std::string ToString(bool verbose) const;
     protected:
       Symbol *symbol;
@@ -367,8 +367,8 @@ namespace ai
     private:
     };
 
-    
-    
+
+
     class Sentence
     {
     public:
@@ -376,7 +376,7 @@ namespace ai
       Sentence(const Sentence &sentence0_in);
 
       Sentence &operator=(const Sentence &rhs_in);
-      
+
       ~Sentence();
       void Delete();
 
@@ -384,10 +384,10 @@ namespace ai
       void EliminateBiconditional();
       void EliminateImplication();
       void MoveNotIn();
-      void EliminateExtraParens();      
-      
+      void EliminateExtraParens();
+
       Sentence0 *GetSentence();
-      
+
       std::string ToString() const;
       std::string ToString(bool verbose) const;
 
@@ -397,10 +397,10 @@ namespace ai
     private:
 
     };
-  
+
     std::ostream & operator<<(std::ostream &os, const Sentence &s);
     std::ostream & operator<<(std::ostream &os, const std::list<Sentence *> &sentences);
-    
+
   }
 }
 #endif /* _SENTENCE_H_ */

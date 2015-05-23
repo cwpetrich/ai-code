@@ -12,18 +12,18 @@ namespace ai
     {
     public:
       enum TokenType { TOKEN_MIN, TOKEN_SYMBOL, TOKEN_LEFT_PAREN, TOKEN_RIGHT_PAREN,
-		       TOKEN_NOT, TOKEN_AND, TOKEN_OR, TOKEN_IMPLIES, TOKEN_IFF, TOKEN_EQUAL,
-		       TOKEN_COMMA, TOKEN_FORALL, TOKEN_EXISTS, TOKEN_EOF, TOKEN_MAX };
+                       TOKEN_NOT, TOKEN_AND, TOKEN_OR, TOKEN_IMPLIES, TOKEN_IFF, TOKEN_EQUAL,
+                       TOKEN_COMMA, TOKEN_FORALL, TOKEN_EXISTS, TOKEN_EOF, TOKEN_MAX };
       struct Token
       {
       public:
-	Token(TokenType type_in) : type(type_in) { /* empty */ }
-	Token(TokenType type_in, const std::string &symbol_in) : type(type_in), symbol(symbol_in) { /* empty */ }
-	TokenType type;
-	std::string symbol;
+      Token(TokenType type_in) : type(type_in) { /* empty */ }
+      Token(TokenType type_in, const std::string &symbol_in) : type(type_in), symbol(symbol_in) { /* empty */ }
+        TokenType type;
+        std::string symbol;
       };
-      
-      
+
+
       Parser();
       ~Parser();
       Sentence *Parse(const std::string &str_in);
@@ -48,7 +48,7 @@ namespace ai
       Term           *pTerm();
       Identifier     *pIdentifier();
       void            Tokenize(const std::string &s_in);
-      
+
     private:
       std::list<Token> tokens;
       std::list<Token>::const_iterator curr_token;
@@ -56,7 +56,7 @@ namespace ai
     };
     std::ostream &operator<<(std::ostream &os, const Parser::Token &t);
     std::ostream &operator<<(std::ostream &os, const std::list<Parser::Token> &tokens);
-    
+
   }
 }
 

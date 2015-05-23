@@ -4,18 +4,18 @@
 
 namespace ai
 {
-	namespace LocalSearch
-	{
-		class HillClimbing : public Algorithm
-		{
-		public:
-			HillClimbing(Problem *problem_in);
-			virtual ~HillClimbing();
-			virtual bool Search();
-		protected:
-		private:
-		};
-	}
+  namespace LocalSearch
+  {
+    class HillClimbing : public Algorithm
+    {
+    public:
+      HillClimbing(Problem *problem_in);
+      virtual ~HillClimbing();
+      virtual bool Search();
+    protected:
+    private:
+    };
+  }
 }
 
 #endif /* _HILLCLIMBING_H_ */

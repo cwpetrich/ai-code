@@ -11,29 +11,29 @@ namespace ai
     class Relation
     {
     public:
-			/* empty relation */
-			Relation();
+      /* empty relation */
+      Relation();
 
-			/* set relation from set */
-			Relation(const std::set<std::vector<Value> > &values_in);
-			
-			/* copy constructor */
-			Relation(const Relation &rhs);
+      /* set relation from set */
+      Relation(const std::set<std::vector<Value> > &values_in);
 
-			/* assignment operator */
-			Relation &operator=(const Relation &rhs);
-			
+      /* copy constructor */
+      Relation(const Relation &rhs);
+
+      /* assignment operator */
+      Relation &operator=(const Relation &rhs);
+
       /* virtual to allow destructor chaining */
       virtual ~Relation();
 
-			/* set the values */
-			void setValues(const std::set<std::vector<Value> > &values_in);
+      /* set the values */
+      void setValues(const std::set<std::vector<Value> > &values_in);
 
-			/* get the values */
-			const std::set<std::vector<Value> > &getValues() const;
-			
+      /* get the values */
+      const std::set<std::vector<Value> > &getValues() const;
+
     protected:
-			std::set<std::vector<Value> > values;
+      std::set<std::vector<Value> > values;
     private:
     };
   }

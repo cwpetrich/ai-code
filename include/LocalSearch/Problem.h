@@ -23,13 +23,13 @@ namespace ai
        * returns false if restart should continue.
        */
       virtual bool GoodEnough(const State * const state_in) = 0;
-      
+
       /* Allocate a random state from the legal state space.
        * The returned state must be 'delete'd by the
        * calling code.
        */
       virtual State *RandomState() const = 0;
-			
+
       /* Select the neighbor of state_in with the
        * highest State::Value().  Allocate the
        * state and return it.

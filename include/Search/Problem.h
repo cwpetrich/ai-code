@@ -14,11 +14,11 @@ namespace ai
     public:
       Problem(State *initial_state_in);
       virtual ~Problem();
-      
+
       State *GetInitialState();
 
       virtual void   Display() const;
-      
+
       virtual bool   GoalTest(const State * const state_in) const = 0;
       virtual bool   FindSuccessors(const State * const state_in,
                                     std::vector<ActionStatePair>
@@ -27,11 +27,11 @@ namespace ai
                               const Action * const action_in,
                               const State  * const state2_in) const = 0;
       virtual double Heuristic(const State  * const state_in) const;
-      
+
     protected:
-      
+
       State             *initial_state;
-      
+
     private:
     };
   }

@@ -6,7 +6,7 @@ namespace ai
   namespace Agent
   {
     class EnvironmentDisplay;
-    
+
     class Environment
     {
       friend class ai::Agent::EnvironmentDisplay;
@@ -23,6 +23,7 @@ namespace ai
       virtual void AddAgent(Agent *agent, Location *location);
       virtual void AddObject(Object *object, Location *location);
       virtual Location *DefaultLocation() const = 0;
+      virtual bool GetUpdateMessage(Message &omsg) const = 0;
       void UpdateDisplays();
       void SetDelay(int delay_in);
       int GetPerformance(Agent *agent);
@@ -36,15 +37,6 @@ namespace ai
       int                   delay;
       RandomNumber          random_number;
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & objects;
-        ar & agents;
-        ar & delay;
-        ar & random_number;
-      }
     };
   }
 }

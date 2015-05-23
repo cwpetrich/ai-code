@@ -10,32 +10,32 @@ namespace ai
     class Domain
     {
     public:
-			/* empty domain */
-			Domain();
+      /* empty domain */
+      Domain();
 
-			/* set domain from set */
-			Domain(const std::set<Value> &values_in);
-			
-			/* copy constructor */
-			Domain(const Domain &rhs);
+      /* set domain from set */
+      Domain(const std::set<Value> &values_in);
 
-			/* assignment operator */
-			Domain &operator=(const Domain &rhs);
-			
+      /* copy constructor */
+      Domain(const Domain &rhs);
+
+      /* assignment operator */
+      Domain &operator=(const Domain &rhs);
+
       /* virtual to allow destructor chaining */
       virtual ~Domain();
 
-			/* set the values */
-			void setValues(const std::set<Value> &values_in);
+      /* set the values */
+      void setValues(const std::set<Value> &values_in);
 
-			/* get the values */
-			const std::set<Value> &getValues() const;
+      /* get the values */
+      const std::set<Value> &getValues() const;
 
-			/* remove a value */
-			bool removeValue(const Value &value_in);
+      /* remove a value */
+      bool removeValue(const Value &value_in);
 
     protected:
-			std::set<Value> values;
+      std::set<Value> values;
     private:
     };
   }

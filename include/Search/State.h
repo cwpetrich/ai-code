@@ -13,23 +13,23 @@ namespace ai
     class State
     {
     public:
-      
+
       /* virtual to insure destructor chaining */
       virtual ~State();
-      
+
       /* Used for text display of state information
        * to std::cout */
       virtual void Display() const;
-      
+
       /* Used for equality testing. Must use dynamic_cast
        * to convert state_in to the correct pointer type.
        */
       virtual bool IsEqual(const State * const state_in) const = 0;
-      
+
       /* Used to quickly store in the graph "closed list".
        */
       virtual std::string HashValue() const;
-      
+
     protected:
     private:
     };

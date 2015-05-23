@@ -17,9 +17,9 @@ namespace ai
       virtual ~Problem();
 
     protected:
-			std::map<Variable, int>    variables;
-			std::map<Variable, Domain> domains;
-			std::vector<Constraint>    constraints;
+      std::map<Variable, int>    variables;
+      std::map<Variable, Domain> domains;
+      std::vector<Constraint>    constraints;
     private:
     };
   }

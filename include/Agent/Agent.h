@@ -9,7 +9,7 @@ namespace ai
     class Environment;
     class Agent;
     std::ostream & operator<<(std::ostream &os, const Agent * agent);
-    
+
     class Agent: public Object
     {
     public:
@@ -20,6 +20,7 @@ namespace ai
       virtual void Kill();
       virtual Action * Program(const Percept *percept);
       virtual bool TextDisplay(std::ostream & os) const;
+      virtual Action * MessageToAction(const Message &imsg) const = 0;
       void Trace();
       void NoTrace();
       void SetPerformance(int value_in);
@@ -35,16 +36,6 @@ namespace ai
       int  performance;
       Environment  *environment;
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & boost::serialization::base_object<Object>(*this);
-        ar & alive;
-        ar & trace;
-        ar & performance;
-        ar & environment;
-      }
     };
   }
 }

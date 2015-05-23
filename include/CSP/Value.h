@@ -10,32 +10,32 @@ namespace ai
     class Value
     {
     public:
-			/* empty string value */
-			Value();
+      /* empty string value */
+      Value();
 
-			/* set domain from set */
-			Value(const std::string &value_in);
-			
-			/* copy constructor */
-			Value(const Value &rhs);
+      /* set domain from set */
+      Value(const std::string &value_in);
 
-			/* assignment operator */
-			Value &operator=(const Value &rhs);
-			
+      /* copy constructor */
+      Value(const Value &rhs);
+
+      /* assignment operator */
+      Value &operator=(const Value &rhs);
+
       /* virtual to allow destructor chaining */
       virtual ~Value();
 
-			/* allow comparison */
-			virtual bool operator<(const Value &rhs) const;
-			
-			/* set the value */
-			virtual void setValue(const std::string &value_in);
-			
-			/* get the value */
-			virtual const std::string &getValue() const;
+      /* allow comparison */
+      virtual bool operator<(const Value &rhs) const;
+
+      /* set the value */
+      virtual void setValue(const std::string &value_in);
+
+      /* get the value */
+      virtual const std::string &getValue() const;
 
     protected:
-			std::string value;
+      std::string value;
     private:
     };
   }

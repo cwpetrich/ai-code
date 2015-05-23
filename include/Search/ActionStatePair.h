@@ -15,16 +15,16 @@ namespace ai
       ActionStatePair();
       ActionStatePair(State *state_in, Action *action_in);
       virtual ~ActionStatePair();
-      
+
       virtual void   Display() const;
-      
+
       State  *GetState() const;
       Action *GetAction() const;
-      
+
     protected:
       State  *state;
       Action *action;
-      
+
     private:
     };
 

@@ -8,10 +8,9 @@
 #include <map>
 #include <vector>
 
-#include "ai_boost.h"
-
 #include <Agent/Options.h>
 #include <Agent/Socket.h>
+#include <Agent/Message.h>
 #include <Agent/RandomNumber.h>
 #include <Agent/Action.h>
 #include <Agent/PerceptAtom.h>

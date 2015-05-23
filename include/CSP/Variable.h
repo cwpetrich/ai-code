@@ -10,32 +10,32 @@ namespace ai
     class Variable
     {
     public:
-			/* empty string name */
-			Variable();
+      /* empty string name */
+      Variable();
 
-			/* set the name */
-			Variable(const std::string &name_in);
-			
-			/* copy constructor */
-			Variable(const Variable &rhs);
+      /* set the name */
+      Variable(const std::string &name_in);
 
-			/* assignment operator */
-			Variable &operator=(const Variable &rhs);
-			
+      /* copy constructor */
+      Variable(const Variable &rhs);
+
+      /* assignment operator */
+      Variable &operator=(const Variable &rhs);
+
       /* virtual to allow destructor chaining */
       virtual ~Variable();
 
-			/* allow for comparison */
-			virtual bool operator<(const Variable &rhs) const;
-			
-			/* set the name */
-			void setName(std::string &name_in);
+      /* allow for comparison */
+      virtual bool operator<(const Variable &rhs) const;
 
-			/* get the name */
-			const std::string &getName() const;
+      /* set the name */
+      void setName(std::string &name_in);
+
+      /* get the name */
+      const std::string &getName() const;
 
     protected:
-			std::string name;
+      std::string name;
     private:
     };
   }

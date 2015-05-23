@@ -23,18 +23,6 @@ namespace ai
       int ma[55];
       int inext;
       int inextp;
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & fac;
-        ar & mz;
-        ar & mbig;
-        ar & mseed;
-        ar & ma;
-        ar & inext;
-        ar & inextp;
-      }
     };
   }
 }

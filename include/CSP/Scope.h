@@ -10,29 +10,29 @@ namespace ai
     class Scope
     {
     public:
-			/* empty scope */
-			Scope();
+      /* empty scope */
+      Scope();
 
-			/* set scope from vector */
-			Scope(const std::vector<Variable> &variables_in);
-			
-			/* copy constructor */
-			Scope(const Scope &rhs);
+      /* set scope from vector */
+      Scope(const std::vector<Variable> &variables_in);
 
-			/* assignment operator */
-			Scope &operator=(const Scope &rhs);
-			
+      /* copy constructor */
+      Scope(const Scope &rhs);
+
+      /* assignment operator */
+      Scope &operator=(const Scope &rhs);
+
       /* virtual to allow destructor chaining */
       virtual ~Scope();
 
-			/* set the variables */
-			void setVariables(const std::vector<Variable> &variables_in);
+      /* set the variables */
+      void setVariables(const std::vector<Variable> &variables_in);
 
-			/* get the variables */
-			const std::vector<Variable> &getVariables() const;
+      /* get the variables */
+      const std::vector<Variable> &getVariables() const;
 
     protected:
-			std::vector<Variable> variables;
+      std::vector<Variable> variables;
     private:
     };
   }

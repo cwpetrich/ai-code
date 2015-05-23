@@ -7,7 +7,7 @@ namespace ai
   {
     class Action;
     std::ostream & operator<<(std::ostream &os, const Action * action);
-    
+
     class Action
     {
     public:
@@ -16,15 +16,10 @@ namespace ai
       virtual bool TextDisplay(std::ostream &os) const = 0;
       int GetCode() const;
       void SetCode(int code_in);
+      virtual bool ToMessage(Message &omsg) const = 0;
     protected:
       int action_code;
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & action_code;
-      }
     };
   }
 }

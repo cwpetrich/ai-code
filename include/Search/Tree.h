@@ -13,10 +13,10 @@ namespace ai
     public:
       Tree(Problem *problem_in, Frontier *frontier_in);
       virtual ~Tree();
-      
+
       /* used to search for one solution */
       virtual bool Search();
-      
+
       /* used to search for more than one solution
        *
        * tree->SearchInit();

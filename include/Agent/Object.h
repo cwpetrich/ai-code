@@ -20,13 +20,6 @@ namespace ai
       std::string name;
       Location *location;
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & name;
-        ar & location;
-      }
     };
   }
 }

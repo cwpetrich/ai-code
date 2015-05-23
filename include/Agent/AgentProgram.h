@@ -12,7 +12,7 @@ namespace ai
       AgentProgram();
       virtual ~AgentProgram();
       virtual Action * Program(const Percept * percept) = 0;
-      
+
       virtual bool TextDisplay(std::ostream & os) const;
       void SetName(const std::string &name_in);
       const std::string & GetName() const;

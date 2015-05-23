@@ -16,9 +16,9 @@ namespace ai
     public:
       KnowledgeBase();
       ~KnowledgeBase();
-    
+
       void AddSentence(const std::string &s_in);
-      
+
       const std::map<std::string, Symbol *>   &GetSymbols() const;
       const std::vector<Sentence *>           &GetSentences() const;
 
@@ -30,9 +30,9 @@ namespace ai
       int                               unique_count;
     private:
     };
-  
+
     std::ostream & operator<<(std::ostream &os, const KnowledgeBase &kb);
-    
+
   }
 }
 

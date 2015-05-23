@@ -10,36 +10,36 @@ namespace ai
     class Constraint
     {
     public:
-			/* empty constraint */
-			Constraint();
+      /* empty constraint */
+      Constraint();
 
-			/* set initial constraint */
-			Constraint(const Scope &scope_in, const Relation &relation_in);
-			
-			/* copy constructor */
-			Constraint(const Constraint &rhs);
+      /* set initial constraint */
+      Constraint(const Scope &scope_in, const Relation &relation_in);
 
-			/* assignment operator */
-			Constraint &operator=(const Constraint &rhs);
-			
+      /* copy constructor */
+      Constraint(const Constraint &rhs);
+
+      /* assignment operator */
+      Constraint &operator=(const Constraint &rhs);
+
       /* virtual to allow destructor chaining */
       virtual ~Constraint();
 
-			/* set the scope */
-			void setScope(const Scope &scope_in);
+      /* set the scope */
+      void setScope(const Scope &scope_in);
 
-			/* get the scope */
-			const Scope &getScope() const;
+      /* get the scope */
+      const Scope &getScope() const;
 
-			/* set the relation */
-			void setRelation(const Relation &relation_in);
+      /* set the relation */
+      void setRelation(const Relation &relation_in);
 
-			/* get the relation */
-			const Relation &getRelation() const;
+      /* get the relation */
+      const Relation &getRelation() const;
 
     protected:
-			Scope    scope;
-			Relation relation;
+      Scope    scope;
+      Relation relation;
     private:
     };
   }

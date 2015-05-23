@@ -16,14 +16,14 @@ namespace ai
     class ClosedList
     {
     public:
-      
+
       ClosedList();
-      
+
       void Clear();
       bool Contains(const Node * const node_in) const;
       bool Insert(Node * node_in);
       size_t Size() const;
-      
+
     protected:
       void SetStyle(const Node * const node_in);
       enum { US_UNKNOWN, US_NO, US_YES };

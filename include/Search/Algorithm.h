@@ -18,7 +18,7 @@ namespace ai
           T_Graph,
           T_MAX
         };
-      
+
       Algorithm(Problem *problem_in, Frontier *frontier_in);
       virtual ~Algorithm();
       virtual bool Search() = 0;
@@ -29,7 +29,7 @@ namespace ai
 
       bool SetGenerationLimit(size_t limit);
       bool SetStoreLimit(size_t limit);
-      
+
     protected:
       Problem  *problem;
       Frontier *frontier;
@@ -38,7 +38,7 @@ namespace ai
       Node *root;
       size_t number_nodes_generated;
       size_t max_nodes_stored;
-      
+
       size_t generation_limit;
       size_t store_limit;
     private:

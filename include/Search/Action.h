@@ -10,9 +10,9 @@ namespace ai
     class Action
     {
     public:
-      virtual ~Action();      
+      virtual ~Action();
       virtual void   Display() const;
-      
+
     protected:
     private:
     };

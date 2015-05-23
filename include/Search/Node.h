@@ -9,7 +9,7 @@ namespace ai
     /**
      * Represents information for one state in a search tree.
      */
-    
+
     class Node
     {
     public:
@@ -20,7 +20,7 @@ namespace ai
            double heuristic_in,
            int depth_in);
       virtual ~Node();
-      
+
       State  *GetState() const;
       Node   *GetParent() const;
       Action *GetAction() const;
@@ -33,7 +33,7 @@ namespace ai
       size_t  GetChildCount() const;
 
     protected:
-      
+
       State  *state;
       Node   *parent;
       Action *action;
@@ -43,7 +43,7 @@ namespace ai
       bool    in_destructor;
 
       std::list<Node *> children;
-      
+
     private:
     };
 
