@@ -21,9 +21,15 @@ namespace ai
              const std::string &luminescence_in);
 
       virtual ai::Agent::Percept *GetPercept(const ai::Agent::Location *location_in);
+      // Add Object's data to omsg, if values are different than stored in old_msg
+      virtual bool AddToMessageIfChanged(ai::Agent::Message &omsg, ai::Agent::Message &old_msg);
+      // Set Object's data from imsg, if values associated with id are present
+      virtual bool SetFromMessageIfExists(unsigned int id, ai::Agent::Message &imsg);
+
       std::string GetExamineString();
       std::string GetDepositString();
-      
+      std::string GetPickupString();
+
       bool SetShortName(const std::string &short_name_in);
       bool SetValue(const double value_in);
       bool SetType(const std::string &type_in);
@@ -34,8 +40,7 @@ namespace ai
       bool SetSize(const std::string &size_in);
       bool SetLuminescence(const std::string &luminescence_in);
       bool AddOther(const std::string &other_in);
-      
-      std::string GetId() const;
+
       std::string GetShortName() const;
       double GetValue() const;
       std::string GetType() const;
@@ -50,11 +55,8 @@ namespace ai
       std::string GetString(const unsigned int cell_id) const;
       bool ParseString(const std::string &str_in,
                        unsigned int &cell_id_out);
-      
+
     protected:
-      void AutoSetId();
-      
-      std::string id;
       std::string short_name;
       double value;
       std::string type;
@@ -66,25 +68,6 @@ namespace ai
       std::string luminescence;
       std::vector<std::string> other;
     private:
-      static int object_id;
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & boost::serialization::base_object<ai::Agent::Object>(*this);
-        ar & id;
-        ar & short_name;
-        ar & value;
-        ar & type;
-        ar & mass;
-        ar & volume;
-        ar & color;
-        ar & shape;
-        ar & size;
-        ar & luminescence;
-        ar & other;
-        ar & object_id;
-      }
     };
   }
 }

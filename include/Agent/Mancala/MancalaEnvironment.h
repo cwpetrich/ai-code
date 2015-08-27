@@ -16,7 +16,7 @@ namespace ai
        * Apply the move that is returned by an agent
        */
       virtual bool ApplyAction(ai::Agent::Agent *agent, ai::Agent::Action *action);
-      
+
       /*
        * Calculate the agent's score
        */
@@ -31,38 +31,37 @@ namespace ai
        * Step applies 1 ply for the current player
        */
       virtual void Step();
-      
+
       /*
        * Run until the game has completed, or n_steps have been reached
        */
       virtual void Run(const int n_steps);
 
       /*
-       * 
+       *
        */
       virtual void AddAgent(ai::Agent::Agent *agent);
-      
+
       /*
-       * Agent Locations are not used, but must override this 
+       * Agent Locations are not used, but must override this
        * not to be an abstract class
        */
       virtual ai::Agent::Location *DefaultLocation() const;
 
       /*
+       * Handle messages with the client.
+       */
+      virtual bool GetUpdateMessage(ai::Agent::Message &omsg);
+      virtual bool UpdateFromMessage(ai::Agent::Message &imsg);
+
+      /*
        * Get a reference to the game board
        */
       const Board & GameBoard() const;
-      
+
     protected:
       Board game_board;
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & boost::serialization::base_object<ai::Agent::Environment>(*this);
-        ar & game_board;
-      }
     };
   }
 }

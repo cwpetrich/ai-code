@@ -6,7 +6,7 @@ namespace ai
   namespace Scavenger
   {
     class Environment;
-    
+
     class EnvironmentDisplay : public ai::Agent::EnvironmentDisplay
     {
     public:
@@ -14,8 +14,12 @@ namespace ai
       virtual ~EnvironmentDisplay();
       virtual void Redraw(ai::Agent::Environment *env);
       
+      void ResetParameters();
+
     protected:
 
+      int m_width_orig, m_height_orig;
+      
       double scale;
       double minx;
       double maxx;
@@ -23,9 +27,9 @@ namespace ai
       double maxy;
       double spanx;
       double spany;
-      
+
     private:
-      
+
     };
   }
 }

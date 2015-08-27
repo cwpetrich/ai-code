@@ -3,33 +3,31 @@
 
 namespace ai
 {
-  namespace Agent
+  namespace XY
   {
-    class XYEnvironment : public Environment
+    class Environment : public ai::Agent::Environment
     {
-      friend class XYEnvironmentDisplay;
+      friend class EnvironmentDisplay;
     public:
-      XYEnvironment();
-      XYEnvironment(const RandomNumber &rand_in, 
-		    int width_in, int height_in, std::vector<Socket *> *displays_in);
-      virtual ~XYEnvironment();
-      virtual bool ApplyAction(Agent *agent, Action *action);
-      virtual void CalculatePerformance(Agent *agent);
-      virtual Location *DefaultLocation() const;
+      Environment();
+      Environment(const ai::Agent::RandomNumber &rand_in,
+                  int width_in, int height_in, std::vector<ai::Agent::Socket *> *displays_in);
+      virtual ~Environment();
+      virtual bool ApplyAction(ai::Agent::Agent *agent, ai::Agent::Action *action);
+      virtual void CalculatePerformance(ai::Agent::Agent *agent);
+      virtual ai::Agent::Location *DefaultLocation() const;
+      /*
+       * Handle messages with the client.
+       */
+      virtual bool GetUpdateMessage(ai::Agent::Message &omsg);
+      virtual bool UpdateFromMessage(ai::Agent::Message &imsg);
+
       int GetWidth() const;
       int GetHeight() const;
     protected:
       int width;
       int height;
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & boost::serialization::base_object<Environment>(*this);
-	ar & width;
-	ar & height;
-      }
     };
   }
 }

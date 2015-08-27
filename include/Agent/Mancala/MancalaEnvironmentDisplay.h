@@ -5,7 +5,7 @@ namespace ai
   namespace Mancala
   {
     class Environment;
-    
+
     class EnvironmentDisplay : public ai::Agent::EnvironmentDisplay
     {
     public:
@@ -16,12 +16,12 @@ namespace ai
       void DrawBins(ai::Agent::Environment *env);
       void DrawLastMoves(ai::Agent::Environment *env);
       void DrawStats(ai::Agent::Environment *env);
-      
+
       virtual void Redraw(ai::Agent::Environment *env);
 
       void Quit();
       bool GetQuit() const;
-      
+
       void MainLoop();
     protected:
       bool quit;

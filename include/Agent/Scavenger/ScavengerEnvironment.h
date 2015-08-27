@@ -9,6 +9,7 @@ namespace ai
     {
       friend class EnvironmentDisplay;
       friend class EnvironmentDisplay3D;    // 3D Display
+      friend class EnvironmentModel;        // 3D Display EnvironmentModel
     public:
       Environment();
       Environment(const ai::Agent::RandomNumber &rand_in, std::vector<ai::Agent::Socket *> *displays_in,
@@ -25,6 +26,11 @@ namespace ai
       virtual void Run(const int n_steps);
       virtual void AddAgent(Agent *agent, Location *location);
       virtual ai::Agent::Location *DefaultLocation() const;
+      /*
+       * Handle messages with the client.
+       */
+      virtual bool GetUpdateMessage(ai::Agent::Message &omsg);
+      virtual bool UpdateFromMessage(ai::Agent::Message &imsg);
 
       bool SetFullyObservable(const bool value_in);
       bool SetObjectLearning(const bool value_in);
@@ -46,7 +52,7 @@ namespace ai
       bool SetExamineCharge(const double value_in);
       bool SetSkipObjectCount(const unsigned int value_in);
       bool SetMaxObjectCount(const unsigned int value_in);
-      
+
       bool   GetFullyObservable() const;
       bool   GetObjectLearning() const;
       double GetMaxCharge() const;
@@ -69,11 +75,11 @@ namespace ai
       unsigned int GetMaxObjectCount() const;
 
       bool   MakeEnoughBases(int num_agents);
-      
+
       void check_cells(const std::string &msg);
     protected:
       void TextDisplay(std::ostream &os) const;
-      
+
       bool ReadFile();
 
       bool MoveAgent(Agent *sw_agent, int action_code);
@@ -87,14 +93,14 @@ namespace ai
 
       std::string world_filename;
 
-      std::vector<Base *>                    bases;
+      std::map<unsigned int, Base *>         bases;
       std::map<Location, Cell*>              cells;
       std::map<unsigned int, Cell*>          cells_by_id;
       std::map<std::string, CellInterface *> cell_interfaces;
       unsigned int                           goal_cell_id; // only used in fully observable
 
       int time_step; // The current time step, starting at 0
-      
+
 
       bool   fully_observable;
       bool   object_learning;
@@ -116,43 +122,10 @@ namespace ai
       double examine_charge;
       unsigned int skip_object_count;
       unsigned int max_object_count;
-      
+
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & boost::serialization::base_object<ai::Agent::Environment>(*this);
-        ar & world_filename;
-        ar & bases;
-        ar & cells;
-        ar & cells_by_id;
-        ar & cell_interfaces;
-        ar & goal_cell_id;
-        ar & time_step;
-        ar & fully_observable;
-        ar & object_learning;
-        ar & max_charge;
-        ar & recharge_per_turn;
-        ar & max_hit_points;
-        ar & max_bin_volume;
-        ar & max_arm_mass;
-        ar & lift_damage;
-        ar & fall_damage_per_meter;
-        ar & recharge_damage;
-        ar & recharge_charge;
-        ar & v_charge_per_meter;
-        ar & h_charge_per_meter;
-        ar & look_charge;
-        ar & pickup_charge;
-        ar & drop_charge;
-        ar & deposit_charge;
-        ar & examine_charge;
-        ar & skip_object_count;
-        ar & max_object_count;
-      }
     };
-    
+
   }
 }
 

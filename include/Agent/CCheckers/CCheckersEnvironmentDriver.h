@@ -5,10 +5,10 @@ namespace ai
 {
   namespace CCheckers
   {
-    class CCheckersEnvironmentDriver : public ai::Agent::EnvironmentDriver
+    class EnvironmentDriver : public ai::Agent::EnvironmentDriver
     {
     public:
-      CCheckersEnvironmentDriver(int argc, char **argv, bool init_options = true);
+      EnvironmentDriver(int argc, char **argv, bool init_options = true);
       virtual void Run();
     protected:
     private:

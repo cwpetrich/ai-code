@@ -12,6 +12,12 @@ namespace ai
       virtual ~Action();
 
       virtual bool TextDisplay(std::ostream &os) const;
+      virtual bool ToMessage(ai::Agent::Message &omsg) const;
+      virtual bool FromMessage(const ai::Agent::Message &imsg);
+      // Add Object's data to omsg, if values are different than stored in old_msg
+      virtual bool AddToMessageIfChanged(const std::string &keyprefix, ai::Agent::Message &omsg, ai::Agent::Message &old_msg);
+      // Set Object's data from imsg, if values associated with id are present
+      virtual bool SetFromMessageIfExists(const std::string &keyprefix, ai::Agent::Message &imsg);
 
       double GetProbabilityPrediction (  ) const;
       bool SetProbabilityPrediction ( const double & probability_prediction_in );
@@ -23,12 +29,12 @@ namespace ai
       std::vector< std::vector<double> > GetBagFlavorProbabilities ( ) const;
       std::vector< std::vector<double> > GetBagWrapperProbabilities ( ) const;
       std::vector< std::vector<double> > GetBagHoleProbabilities ( ) const;
-      
+
       bool SetBagProbabilities ( const std::vector<double> &p_in );
       bool SetBagFlavorProbabilities ( const std::vector< std::vector<double> > &p_in );
       bool SetBagWrapperProbabilities ( const std::vector< std::vector<double> > &p_in );
       bool SetBagHoleProbabilities ( const std::vector< std::vector<double> > &p_in );
-      
+
       enum ActionEnum
         {
           PREDICT,           /* Predict the flavor and probability of next draw */
@@ -36,7 +42,7 @@ namespace ai
           QUIT,              /* Stop playing */
           NOOP               /* Do nothing */
         };
-      
+
     protected:
       double probability_prediction;
       int    flavor_prediction;
@@ -45,21 +51,8 @@ namespace ai
       std::vector< std::vector<double> > bag_flavor_probabilities;  // The probability of each flavor, for each bag.
       std::vector< std::vector<double> > bag_wrapper_probabilities; // The prob. of each wrapper, for each bag.
       std::vector< std::vector<double> > bag_hole_probabilities;    // The prob. of each hole, for each bag.
-      
-    private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & boost::serialization::base_object<ai::Agent::Action>(*this);
-        ar & probability_prediction;
-        ar & flavor_prediction;
 
-        ar & bag_probabilities;
-        ar & bag_flavor_probabilities;
-        ar & bag_wrapper_probabilities;
-        ar & bag_hole_probabilities;
-      }
+    private:
     };
   }
 }

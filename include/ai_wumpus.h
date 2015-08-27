@@ -6,9 +6,10 @@
 #include <Agent/Wumpus/WumpusAction.h>
 #include <Agent/Wumpus/WumpusAgent.h>
 #include <Agent/Wumpus/WumpusObjects.h>
-#include <Agent/Wumpus/WumpusWorld.h>
-#include <Agent/Wumpus/WumpusWorldDisplay.h>
-#include <Agent/Wumpus/WumpusWorldDriver.h>
+#include <Agent/Wumpus/WumpusDisplayDriver.h>
+#include <Agent/Wumpus/WumpusEnvironment.h>
+#include <Agent/Wumpus/WumpusEnvironmentDisplay.h>
+#include <Agent/Wumpus/WumpusEnvironmentDriver.h>
 
 #endif /* _AI_WUMPUS_H_ */
 /* Local Variables: */

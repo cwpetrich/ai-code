@@ -21,20 +21,21 @@ namespace ai
       virtual Action * Program(const Percept *percept);
       virtual bool TextDisplay(std::ostream & os) const;
       virtual Action * MessageToAction(const Message &imsg) const = 0;
+      // Add Object's data to omsg, if values are different than stored in old_msg
+      virtual bool AddToMessageIfChanged(ai::Agent::Message &omsg, ai::Agent::Message &old_msg);
+      // Set Object's data from imsg, if values associated with id are present
+      virtual bool SetFromMessageIfExists(unsigned int id, ai::Agent::Message &imsg);
       void Trace();
       void NoTrace();
       void SetPerformance(int value_in);
       void AddPerformance(int value_in);
       int GetPerformance() const;
-      void SetEnvironment(Environment *env_in);
-      Environment * GetEnvironment() const;
       Socket * GetSocket() const;
     protected:
       Socket * sock;
       bool alive;
       bool trace;
       int  performance;
-      Environment  *environment;
     private:
     };
   }

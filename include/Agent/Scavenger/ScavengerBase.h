@@ -9,39 +9,36 @@ namespace ai
     {
     public:
       Base();
-      Base(Agent *agent_in, Cell *cell_in);
+      Base(unsigned int agent_id_in, unsigned int cell_id_in);
 
       virtual ai::Agent::Percept *GetPercept(const ai::Agent::Location *location_in);
-      
-      bool      SetAgent(Agent *agent_in);
-      bool      SetCell(Cell *cell_in);
-      Agent    *GetAgent() const;
-      Cell     *GetCell() const;
+      // Add Object's data to omsg, if values are different than stored in old_msg
+      virtual bool AddToMessageIfChanged(ai::Agent::Message &omsg, ai::Agent::Message &old_msg);
+      // Set Object's data from imsg, if values associated with id are present
+      virtual bool SetFromMessageIfExists(unsigned int id, ai::Agent::Message &imsg);
+
+      bool         SetAgent(unsigned int agent_id_in);
+      bool         SetCell(unsigned int cell_id_in);
+      unsigned int GetAgent() const;
+      unsigned int GetCell() const;
 
       bool AddObject ( ai::Scavenger::Object *obj_in );
-      std::vector<ai::Scavenger::Object *> & GetHopper (  );
-      ai::Scavenger::Object * GetObject(const std::string &object_id_in);
-      
+      std::map<unsigned int, unsigned int> & GetHopper (  );
+      ai::Scavenger::Object * GetObject(const unsigned int object_id_in);
+
       std::string GetString() const;
       static bool ParseString(const std::string &base_in,
                               unsigned int &cell_id_out);
 
       double GetHopperValue(const unsigned int skip_object_count, const unsigned int max_object_count) const;
     protected:
-      Agent    * agent;
-      Cell     * cell;
-      
-      std::vector<ai::Scavenger::Object *> hopper;
+      unsigned int m_agent_id;
+      unsigned int m_cell_id;
+
+      std::map<unsigned int, unsigned int> m_hopper;
+      std::map<unsigned int, unsigned int> m_sequence_number;
+      int                                  m_next_sequence_number;
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & boost::serialization::base_object<ai::Agent::Object>(*this);
-        ar & agent;
-        ar & cell;
-        ar & hopper;
-      }
     };
   }
 }

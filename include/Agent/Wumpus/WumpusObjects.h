@@ -3,74 +3,66 @@
 
 namespace ai
 {
-  namespace Agent
+  namespace Wumpus
   {
-    class WumpusGoldObject : public XYObject
+    class GoldObject : public ai::XY::Object
     {
     public:
-      WumpusGoldObject();
-      virtual Percept *GetPercept(const Location *location);
-      virtual bool Near(const Location *location, int distance);
+      GoldObject();
+      virtual ai::Agent::Percept *GetPercept(const ai::Agent::Location *location);
+      virtual bool Near(const ai::Agent::Location *location, int distance);
+      // Add Object's data to omsg, if values are different than stored in old_msg
+      virtual bool AddToMessageIfChanged(ai::Agent::Message &omsg, ai::Agent::Message &old_msg);
+      // Set Object's data from imsg, if values associated with id are present
+      virtual bool SetFromMessageIfExists(unsigned int id, ai::Agent::Message &imsg);
     protected:
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & boost::serialization::base_object<XYObject>(*this);
-      }
     };
-    class WumpusPitObject : public XYObject
+
+    class PitObject : public ai::XY::Object
     {
     public:
-      WumpusPitObject();
-      virtual Percept *GetPercept(const Location *location);
-      virtual bool Near(const Location *location, int distance);
+      PitObject();
+      virtual ai::Agent::Percept *GetPercept(const ai::Agent::Location *location);
+      virtual bool Near(const ai::Agent::Location *location, int distance);
+      // Add Object's data to omsg, if values are different than stored in old_msg
+      virtual bool AddToMessageIfChanged(ai::Agent::Message &omsg, ai::Agent::Message &old_msg);
+      // Set Object's data from imsg, if values associated with id are present
+      virtual bool SetFromMessageIfExists(unsigned int id, ai::Agent::Message &imsg);
     protected:
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & boost::serialization::base_object<XYObject>(*this);
-      }
     };
-    class WumpusWumpusObject : public XYObject
+
+    class WumpusObject : public ai::XY::Object
     {
     public:
-      WumpusWumpusObject();
-      virtual Percept *GetPercept(const Location *location);
-      virtual bool Near(const Location *location, int distance);
+      WumpusObject();
+      virtual ai::Agent::Percept *GetPercept(const ai::Agent::Location *location);
+      virtual bool Near(const ai::Agent::Location *location, int distance);
+      // Add Object's data to omsg, if values are different than stored in old_msg
+      virtual bool AddToMessageIfChanged(ai::Agent::Message &omsg, ai::Agent::Message &old_msg);
+      // Set Object's data from imsg, if values associated with id are present
+      virtual bool SetFromMessageIfExists(unsigned int id, ai::Agent::Message &imsg);
       virtual void Kill();
       virtual bool IsAlive() const;
     protected:
       bool alive;
       bool scream;
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & boost::serialization::base_object<XYObject>(*this);
-	ar & alive;
-	ar & scream;
-      }
     };
-    
-    class WumpusTardisObject : public XYObject
+
+    class TardisObject : public ai::XY::Object
     {
     public:
-      WumpusTardisObject();
-      virtual Percept *GetPercept(const Location *location);
-      virtual bool Near(const Location *location, int distance);
+      TardisObject();
+      virtual ai::Agent::Percept *GetPercept(const ai::Agent::Location *location);
+      virtual bool Near(const ai::Agent::Location *location, int distance);
+      // Add Object's data to omsg, if values are different than stored in old_msg
+      virtual bool AddToMessageIfChanged(ai::Agent::Message &omsg, ai::Agent::Message &old_msg);
+      // Set Object's data from imsg, if values associated with id are present
+      virtual bool SetFromMessageIfExists(unsigned int id, ai::Agent::Message &imsg);
     protected:
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & boost::serialization::base_object<XYObject>(*this);
-      }
     };
   }
 }

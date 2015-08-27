@@ -9,6 +9,7 @@
 #include <Agent/TicTacToe/TTTEnvironment.h>
 #include <Agent/TicTacToe/TTTEnvironmentDisplay.h>
 #include <Agent/TicTacToe/TTTEnvironmentDriver.h>
+#include <Agent/TicTacToe/TTTDisplayDriver.h>
 
 #endif /* _AI_TICTACTOE_H_ */
 /* Local Variables: */

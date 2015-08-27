@@ -6,6 +6,7 @@
 #include <Agent/CCheckers/CCheckersBasicBoard.h>
 #include <Agent/CCheckers/CCheckersAction.h>
 #include <Agent/CCheckers/CCheckersAgent.h>
+#include <Agent/CCheckers/CCheckersDisplayDriver.h>
 #include <Agent/CCheckers/CCheckersEnvironment.h>
 #include <Agent/CCheckers/CCheckersEnvironmentDisplay.h>
 #include <Agent/CCheckers/CCheckersEnvironmentDriver.h>

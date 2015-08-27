@@ -1,8 +1,6 @@
 #ifndef _DISPLAYDRIVER_H_
 #define _DISPLAYDRIVER_H_
 
-#include <ai_scavenger.h>
-
 namespace ai
 {
   namespace Agent
@@ -11,17 +9,25 @@ namespace ai
     {
     public:
       DisplayDriver(int argc, char **argv);
-      void EnvironmentDisplaySelect(Environment * env);
-      void Run();
-      void DrawFrame();
-      void GetEnvironment();
+      virtual ~DisplayDriver();
+      virtual void SetEnvironment(Environment * env);
+      // Must set mEnvironmentDisplay to be a correct
+      // EnvironmentDisplay, passing env.  Must also
+      // set mEnvironmentDisplaySet.
+      virtual void SetEnvironmentDisplay(Environment * env) = 0;
+      virtual void Run();
+      virtual void DrawFrame();
+      virtual void GetEnvironment();
     protected:
+      Environment        * mEnvironment;
+      volatile bool mEnvironmentSet;
       EnvironmentDisplay * mEnvironmentDisplay;
       volatile bool mEnvironmentDisplaySet;
       Options mOptions;
       Socket mSocket;
+      bool   mClose;
     private:
-      
+
     };
   }
 }

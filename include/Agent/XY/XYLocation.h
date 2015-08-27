@@ -3,26 +3,20 @@
 
 namespace ai
 {
-  namespace Agent
+  namespace XY
   {
-    class XYLocation : public Location
+    class Location : public ai::Agent::Location
     {
     public:
       int GetX() const;
       int GetY() const;
       void Set(int x_in, int y_in);
     protected:
+      friend class Agent;
+      friend class Object;
       int x;
       int y;
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & boost::serialization::base_object<Location>(*this);
-	ar & x;
-	ar & y;
-      }
     };
   }
 }

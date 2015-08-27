@@ -3,21 +3,19 @@
 
 namespace ai
 {
-  namespace Agent
+  namespace XY
   {
-    class XYObject : public Object
+    class Object : public ai::Agent::Object
     {
     public:
-      virtual Percept *GetPercept(const Location *location);
-      virtual bool Near(const Location *location, int radius);
+      virtual ai::Agent::Percept *GetPercept(const ai::Agent::Location *location);
+      virtual bool Near(const ai::Agent::Location *location, int radius);
+      // Add Object's data to omsg, if values are different than stored in old_msg
+      virtual bool AddToMessageIfChanged(ai::Agent::Message &omsg, ai::Agent::Message &old_msg);
+      // Set Object's data from imsg, if values associated with id are present
+      virtual bool SetFromMessageIfExists(unsigned int id, ai::Agent::Message &imsg);
     protected:
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & boost::serialization::base_object<Object>(*this);
-      }
     };
   }
 }

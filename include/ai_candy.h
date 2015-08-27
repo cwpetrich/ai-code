@@ -5,6 +5,7 @@
 
 #include <Agent/Candy/CandyAction.h>
 #include <Agent/Candy/CandyAgent.h>
+#include <Agent/Candy/CandyDisplayDriver.h>
 #include <Agent/Candy/CandyEnvironment.h>
 #include <Agent/Candy/CandyEnvironmentDisplay.h>
 #include <Agent/Candy/CandyEnvironmentDriver.h>

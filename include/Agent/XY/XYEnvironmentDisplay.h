@@ -3,16 +3,16 @@
 
 namespace ai
 {
-  namespace Agent
+  namespace XY
   {
-    class XYEnvironment;
-    
-    class XYEnvironmentDisplay : public EnvironmentDisplay
+    class Environment;
+
+    class EnvironmentDisplay : public ai::Agent::EnvironmentDisplay
     {
     public:
-      XYEnvironmentDisplay(Environment *env);
-      virtual ~XYEnvironmentDisplay();
-      virtual void Redraw(Environment *env);
+      EnvironmentDisplay(ai::Agent::Environment *env);
+      virtual ~EnvironmentDisplay();
+      virtual void Redraw(ai::Agent::Environment *env);
     protected:
       int spacing;
     private:

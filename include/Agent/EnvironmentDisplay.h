@@ -17,7 +17,7 @@ namespace ai
       virtual void Redraw();
 
       void SetColor(float *material);
-      void SetEnv(Environment *env_in);
+      virtual void SetEnv(Environment *env_in);
       Environment * GetEnv() const;
 
       void DrawText(int x, int y, char *str);

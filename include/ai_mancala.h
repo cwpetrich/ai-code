@@ -6,6 +6,7 @@
 #include <Agent/Mancala/MancalaBoard.h>
 #include <Agent/Mancala/MancalaAction.h>
 #include <Agent/Mancala/MancalaAgent.h>
+#include <Agent/Mancala/MancalaDisplayDriver.h>
 #include <Agent/Mancala/MancalaEnvironment.h>
 #include <Agent/Mancala/MancalaEnvironmentDisplay.h>
 #include <Agent/Mancala/MancalaEnvironmentDriver.h>

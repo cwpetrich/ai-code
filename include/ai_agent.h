@@ -23,5 +23,8 @@
 #include <Agent/EnvironmentDisplay.h>
 #include <Agent/AgentDriver.h>
 #include <Agent/EnvironmentDriver.h>
+#include <Agent/DisplayDriver.h>
+
+#include <Support/logging.h>
 
 #endif /* _AI_AGENT_H_ */

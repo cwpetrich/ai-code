@@ -18,7 +18,7 @@ namespace ai
           EE_MAX
         };
 
-      
+
       Environment();
       Environment(const ai::Agent::RandomNumber &rand_in, std::vector<ai::Agent::Socket *> *displays_in,
                   const int &environment_type_in);
@@ -30,9 +30,14 @@ namespace ai
       virtual void Step();
       virtual void Run(const int n_steps);
       virtual ai::Agent::Location *DefaultLocation() const;
+      /*
+       * Handle messages with the client.
+       */
+      virtual bool GetUpdateMessage(ai::Agent::Message &omsg);
+      virtual bool UpdateFromMessage(ai::Agent::Message &imsg);
 
       int GetEnvironmentType() const;
-      
+
       int GetCurrentFlavor() const;
       int GetNumberOfFlavors( ) const;
       double GetFlavorProbability( const int &flavor_in ) const;
@@ -43,7 +48,7 @@ namespace ai
       double GetBagFlavorProbability( const int &bag_in, const int &flavor_in ) const;
       double GetBagWrapperProbability( const int &bag_in, const int &wrapper_in ) const;
       double GetBagHoleProbability( const int &bag_in, const int &wrapper_in ) const;
-      
+
     protected:
       void TextDisplay(std::ostream &os) const;
 
@@ -53,7 +58,7 @@ namespace ai
       bool NoopAgent(Agent *agent);
 
       bool SetMixedBagSamples();
-      
+
 
       int environment_type;
       int time_step;                             // The current time step, starting at 0
@@ -72,23 +77,6 @@ namespace ai
                                                                      * The internal vectors store the
                                                                      * flavor, wrapper, hole values */
     private:
-      friend class boost::serialization::access;
-      template<class Archive>
-      void serialize(Archive & ar, const unsigned int version)
-      {
-        ar & boost::serialization::base_object<ai::Agent::Environment>(*this);
-        ar & time_step;
-        ar & num_flavors;
-        ar & flavor_probabilities;
-        ar & flavor_history;
-        ar & current_flavor;
-        ar & bag_probabilities;
-        ar & bag_flavor_probabilities;
-        ar & bag_wrapper_probabilities;
-        ar & bag_hole_probabilities;
-        ar & number_of_samples;
-        ar & samples;
-      }
     };
   }
 }

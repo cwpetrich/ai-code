@@ -5,13 +5,13 @@ namespace ai
 {
   namespace CCheckers
   {
-    class CCheckersEnvironment;
-    
-    class CCheckersEnvironmentDisplay : public ai::Agent::EnvironmentDisplay
+    class Environment;
+
+    class EnvironmentDisplay : public ai::Agent::EnvironmentDisplay
     {
     public:
-      CCheckersEnvironmentDisplay(ai::Agent::Environment *env, int width_in, int height_in);
-      virtual ~CCheckersEnvironmentDisplay();
+      EnvironmentDisplay(ai::Agent::Environment *env, int width_in, int height_in);
+      virtual ~EnvironmentDisplay();
 
       float DrawConvertX(int x, int y);
       void DrawGridLines();
@@ -19,12 +19,12 @@ namespace ai
       void DrawHolesAndMarbles(ai::Agent::Environment *env);
       void DrawLastMoves(ai::Agent::Environment *env);
       void DrawStats(ai::Agent::Environment *env);
-      
+
       virtual void Redraw(ai::Agent::Environment *env);
 
       void Quit();
       bool GetQuit() const;
-      
+
       void MainLoop();
     protected:
       bool quit;
