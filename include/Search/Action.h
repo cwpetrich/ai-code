@@ -10,10 +10,17 @@ namespace ai
     class Action
     {
     public:
+      /* Virtual to insure destructor chaining
+       */
       virtual ~Action();
+
+      /* Textual display of action for "print debugging" usage.
+       */
       virtual void   Display() const;
 
     protected:
+      /* Data members to support your search problem.
+       */
     private:
     };
   }

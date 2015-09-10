@@ -7,6 +7,7 @@ namespace ai
   {
     /**
      * Search tree algorithm.
+     * See Algorithm.h
      */
     class Tree : public Algorithm
     {

@@ -10,6 +10,17 @@ namespace ai
   namespace Search
   {
     /**
+     * Utility class to support pointer storage in the closed list.
+     */
+    class ClosedListStatePointer
+    {
+    public:
+      ClosedListStatePointer(const State * const state_in);
+      bool operator<(const ClosedListStatePointer &rhs) const;
+      const State * const state;
+    };
+    
+    /**
      * Class to store Nodes that have already
      * been found during graph search.
      */
@@ -20,6 +31,7 @@ namespace ai
       ClosedList();
 
       void Clear();
+      bool Contains(const State * const state_in) const;
       bool Contains(const Node * const node_in) const;
       bool Insert(Node * node_in);
       size_t Size() const;
@@ -29,7 +41,7 @@ namespace ai
       enum { US_UNKNOWN, US_NO, US_YES };
       int use_set;
       std::vector<Node *> closed_list;
-      std::set<std::string> closed_set;
+      std::set<ClosedListStatePointer> closed_set;
     private:
     };
 
