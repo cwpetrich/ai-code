@@ -7,6 +7,7 @@ namespace ai
   {
     /**
      * Search algorithm to remove repeated states from search space.
+     * See Algorithm.h
      */
     class Graph : public Algorithm
     {

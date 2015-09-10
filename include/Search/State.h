@@ -23,14 +23,20 @@ namespace ai
 
       /* Used for equality testing. Must use dynamic_cast
        * to convert state_in to the correct pointer type.
+       * True if the current object and state_in are the same value.
        */
       virtual bool IsEqual(const State * const state_in) const = 0;
 
-      /* Used to quickly store in the graph "closed list".
+      /* Used for ordered storing. Must use dynamic_cast
+       * to convert state_in to the correct pointer type.
+       * True if current object is less than state_in.
        */
-      virtual std::string HashValue() const;
+      virtual bool IsLessThan(const State * const state_in) const = 0;
 
     protected:
+      /* Choose data values appropriate for your problem.
+       */
+
     private:
     };
   }
