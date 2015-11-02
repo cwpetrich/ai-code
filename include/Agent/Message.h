@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <set>
 
 
 namespace ai
@@ -390,12 +391,17 @@ namespace ai
           }                                                             \
       } while(0)
 
-#define SET_MAP_TO_POINTER_FROM_MSG_IF_EXISTS(keystream, mp, ptrtype, message) \
+#define SET_MAP_TO_POINTER_FROM_MSG_IF_EXISTS(keystream, mp, keytype, ptrtype, message) \
     do                                                                \
-      { /* FIXME: Does not account for deleted items */                 \
+      {                                                                 \
         size_t M_i, M_counti;                                           \
         unsigned int M_id;                                              \
         SET_FROM_MSG(keystream << "SIZE", M_counti, (message));         \
+        std::set<keytype> not_here;                                     \
+        for(auto M_it = (mp).begin(); M_it != (mp).end(); M_it++)       \
+          {                                                             \
+            not_here.insert(M_it->first);                               \
+          }                                                             \
         for(M_i = 0; M_i < M_counti; M_i++)                             \
           {                                                             \
             M_id = 0x7FFFFFFF;                                          \
@@ -416,24 +422,39 @@ namespace ai
                   {                                                     \
                     DBGP_E(LOG_STREAM(std::cerr) << "Failed to SetFromMessageIfExists()" << std::endl); \
                   }                                                     \
+                not_here.erase(M_id);                                   \
               }                                                         \
             else                                                        \
               {                                                         \
                 DBGP_E(LOG_STREAM(std::cerr) << #mp << "[" << M_id << "] " << "doesn't exist." << std::endl); \
               }                                                         \
           }                                                             \
+        for(auto M_it2 = not_here.begin(); M_it2 != not_here.end(); M_it2++) \
+          {                                                             \
+            (mp).erase(*M_it2);                                         \
+          }                                                             \
       } while(0)
 
 #define SET_MAP_FROM_MSG_IF_EXISTS(keystream, mp, keytype, message)     \
     do                                                                  \
-      { /* FIXME: Does not account for deleted items */                 \
+      {                                                                 \
         size_t M_i, M_counti;                                           \
         SET_FROM_MSG(keystream << "SIZE", M_counti, (message));         \
+        std::set<keytype> not_here;                                     \
+        for(auto M_it = (mp).begin(); M_it != (mp).end(); M_it++)       \
+          {                                                             \
+            not_here.insert(M_it->first);                               \
+          }                                                             \
         for(M_i = 0; M_i < M_counti; M_i++)                             \
           {                                                             \
             keytype M_id;                                               \
             SET_FROM_MSG(keystream << "ITEM " << M_i, M_id, (message)); \
             SET_FROM_MSG_IF_EXISTS(keystream << "VALUE " << M_id, (mp)[M_id], (message)); \
+            not_here.erase(M_id);                                       \
+          }                                                             \
+        for(auto M_it2 = not_here.begin(); M_it2 != not_here.end(); M_it2++) \
+          {                                                             \
+            (mp).erase(*M_it2);                                         \
           }                                                             \
       } while(0)
 

@@ -15,6 +15,7 @@ namespace ai {
       // Agent Structure for storing agent states
       struct AgentInfo {
         float x; float y; float z;
+        float baseX, baseY, baseZ;
         float health; float charge;
         int baseSize; int hopperSize; int locationSize;
         int score;
