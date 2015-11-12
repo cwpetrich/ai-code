@@ -8,7 +8,6 @@
 
 # keep known files and directories
 !*.txt
-!worlds-2012/
-!worlds-2013/
-!worlds-2014/
-!worlds-2015/
+!learning-worlds/
+!online-worlds/
+!search-worlds/
